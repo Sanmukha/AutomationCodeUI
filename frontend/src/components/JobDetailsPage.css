@@ -1,0 +1,9 @@
+/* Styles for JobDetailsPage */
+.JobDetailsPage-container, .table-wrapper, .form-wrapper {
+  padding:16px;
+  font-family: sans-serif;
+}
+.data-table { width:100%; border-collapse:collapse;}
+.data-table th, .data-table td { border:1px solid #ddd; padding:8px; }
+.field { margin-bottom:12px;}
+.error { color:#c00; font-size:12px;}

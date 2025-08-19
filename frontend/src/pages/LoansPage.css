@@ -1,0 +1,3 @@
+/* Styles for LoansPage */
+.LoansPage-container { padding:16px; font-family:sans-serif; }
+.chart-placeholder { height: 200px; border: 1px dashed #aaa; display:flex; align-items:center; justify-content:center; color:#666; }

@@ -1,3 +1,7 @@
 /* Styles for StocksPage */
 .StocksPage-container { padding:16px; font-family:sans-serif; }
-.chart-placeholder { height: 200px; border: 1px dashed #aaa; display:flex; align-items:center; justify-content:center; color:#666; }
+.chart-placeholder { height: 200px; border: 1px dashed #aaa; display:flex; align-items:center; justify-content:center; color:#666; margin-top:12px; }
+.filters { margin: 12px 0; }
+.data-table { width:100%; border-collapse: collapse; margin-top:8px; }
+.data-table th, .data-table td { border:1px solid #ddd; padding:8px; }
+.data-table th { cursor: pointer; background:#fafafa; }

@@ -1,6 +1,16 @@
 import React, { useState, useMemo } from 'react';
 import './LoansPage.css';
 
+interface Row {
+  loanType: string;
+  amount: string;
+  interestRate: string;
+  startDate: string;
+  endDate: string;
+  emi: string;
+  outstandingBalance: string;
+}
+
 export const LoansPage: React.FC = () => {
   const initialData: Row[] = [
   {
@@ -62,9 +72,6 @@ export const LoansPage: React.FC = () => {
       <div className="filters"><label style={{marginRight:8}}>Loan Type: <input value={q.loanType || ''} onChange={e => setQ(v => ({...v, loanType: e.target.value}))} /></label> <label style={{marginRight:8}}>Remaining Tenure: <input value={q.remainingTenure || ''} onChange={e => setQ(v => ({...v, remainingTenure: e.target.value}))} /></label> </div>
       {/* Table */}
       
-      interface Row {
-  loanType: string;\n  amount: string;\n  interestRate: string;\n  startDate: string;\n  endDate: string;\n  emi: string;\n  outstandingBalance: string;
-      }
       <table className="data-table">
         <thead><tr><th onClick={() => doSort('loanType')}>Loan Type</th><th onClick={() => doSort('amount')}>Amount</th><th onClick={() => doSort('interestRate')}>Interest Rate</th><th onClick={() => doSort('startDate')}>Start Date</th><th onClick={() => doSort('endDate')}>End Date</th><th onClick={() => doSort('emi')}>EMI</th><th onClick={() => doSort('outstandingBalance')}>Outstanding Balance</th></tr></thead>
         <tbody>{sorted.map((_,i) => (<tr key={i}><td>{sorted[i].loanType}</td><td>{sorted[i].amount}</td><td>{sorted[i].interestRate}</td><td>{sorted[i].startDate}</td><td>{sorted[i].endDate}</td><td>{sorted[i].emi}</td><td>{sorted[i].outstandingBalance}</td></tr>))}</tbody>

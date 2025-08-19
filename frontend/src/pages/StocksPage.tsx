@@ -1,6 +1,16 @@
 import React, { useState, useMemo } from 'react';
 import './StocksPage.css';
 
+interface Row {
+  stockName: string;
+  sector: string;
+  units: string;
+  buyPrice: string;
+  currentPrice: string;
+  totalValue: string;
+  profitLoss: string;
+}
+
 export const StocksPage: React.FC = () => {
   const initialData: Row[] = [
   {
@@ -62,9 +72,6 @@ export const StocksPage: React.FC = () => {
       <div className="filters"><label style={{marginRight:8}}>Sector: <input value={q.sector || ''} onChange={e => setQ(v => ({...v, sector: e.target.value}))} /></label> <label style={{marginRight:8}}>Profit/Loss Range: <input value={q.profitLossRange || ''} onChange={e => setQ(v => ({...v, profitLossRange: e.target.value}))} /></label> <label style={{marginRight:8}}>Purchase Date: <input value={q.purchaseDate || ''} onChange={e => setQ(v => ({...v, purchaseDate: e.target.value}))} /></label> </div>
       {/* Table */}
       
-      interface Row {
-  stockName: string;\n  sector: string;\n  units: string;\n  buyPrice: string;\n  currentPrice: string;\n  totalValue: string;\n  profitLoss: string;
-      }
       <table className="data-table">
         <thead><tr><th onClick={() => doSort('stockName')}>Stock Name</th><th onClick={() => doSort('sector')}>Sector</th><th onClick={() => doSort('units')}>Units</th><th onClick={() => doSort('buyPrice')}>Buy Price</th><th onClick={() => doSort('currentPrice')}>Current Price</th><th onClick={() => doSort('totalValue')}>Total Value</th><th onClick={() => doSort('profitLoss')}>Profit/Loss</th></tr></thead>
         <tbody>{sorted.map((_,i) => (<tr key={i}><td>{sorted[i].stockName}</td><td>{sorted[i].sector}</td><td>{sorted[i].units}</td><td>{sorted[i].buyPrice}</td><td>{sorted[i].currentPrice}</td><td>{sorted[i].totalValue}</td><td>{sorted[i].profitLoss}</td></tr>))}</tbody>

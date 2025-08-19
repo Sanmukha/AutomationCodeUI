@@ -1,6 +1,13 @@
 import React, { useState, useMemo } from 'react';
 import './SalaryPage.css';
 
+interface Row {
+  month: string;
+  grossSalary: string;
+  deductions: string;
+  netSalary: string;
+}
+
 export const SalaryPage: React.FC = () => {
   const initialData: Row[] = [
   {
@@ -47,9 +54,6 @@ export const SalaryPage: React.FC = () => {
       <div className="filters"><label style={{marginRight:8}}>Year: <input value={q.year || ''} onChange={e => setQ(v => ({...v, year: e.target.value}))} /></label> </div>
       {/* Table */}
       
-      interface Row {
-  month: string;\n  grossSalary: string;\n  deductions: string;\n  netSalary: string;
-      }
       <table className="data-table">
         <thead><tr><th onClick={() => doSort('month')}>Month</th><th onClick={() => doSort('grossSalary')}>Gross Salary</th><th onClick={() => doSort('deductions')}>Deductions</th><th onClick={() => doSort('netSalary')}>Net Salary</th></tr></thead>
         <tbody>{sorted.map((_,i) => (<tr key={i}><td>{sorted[i].month}</td><td>{sorted[i].grossSalary}</td><td>{sorted[i].deductions}</td><td>{sorted[i].netSalary}</td></tr>))}</tbody>

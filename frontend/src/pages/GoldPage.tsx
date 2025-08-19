@@ -1,6 +1,15 @@
 import React, { useState, useMemo } from 'react';
 import './GoldPage.css';
 
+interface Row {
+  purchaseDate: string;
+  weightGrams: string;
+  purchasePrice: string;
+  currentPrice: string;
+  currentValue: string;
+  gainLoss: string;
+}
+
 export const GoldPage: React.FC = () => {
   const initialData: Row[] = [
   {
@@ -57,9 +66,6 @@ export const GoldPage: React.FC = () => {
       <div className="filters"><label style={{marginRight:8}}>Date Range: <input value={q.dateRange || ''} onChange={e => setQ(v => ({...v, dateRange: e.target.value}))} /></label> <label style={{marginRight:8}}>Gain/Loss: <input value={q.gainLoss || ''} onChange={e => setQ(v => ({...v, gainLoss: e.target.value}))} /></label> </div>
       {/* Table */}
       
-      interface Row {
-  purchaseDate: string;\n  weightGrams: string;\n  purchasePrice: string;\n  currentPrice: string;\n  currentValue: string;\n  gainLoss: string;
-      }
       <table className="data-table">
         <thead><tr><th onClick={() => doSort('purchaseDate')}>Purchase Date</th><th onClick={() => doSort('weightGrams')}>Weight (grams</th><th onClick={() => doSort('purchasePrice')}>Purchase Price</th><th onClick={() => doSort('currentPrice')}>Current Price</th><th onClick={() => doSort('currentValue')}>Current Value</th><th onClick={() => doSort('gainLoss')}>Gain/Loss</th></tr></thead>
         <tbody>{sorted.map((_,i) => (<tr key={i}><td>{sorted[i].purchaseDate}</td><td>{sorted[i].weightGrams}</td><td>{sorted[i].purchasePrice}</td><td>{sorted[i].currentPrice}</td><td>{sorted[i].currentValue}</td><td>{sorted[i].gainLoss}</td></tr>))}</tbody>

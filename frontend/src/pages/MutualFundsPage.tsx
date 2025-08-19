@@ -1,6 +1,16 @@
 import React, { useState, useMemo } from 'react';
 import './MutualFundsPage.css';
 
+interface Row {
+  fundName: string;
+  category: string;
+  units: string;
+  nav: string;
+  investedAmount: string;
+  currentValue: string;
+  returns: string;
+}
+
 export const MutualFundsPage: React.FC = () => {
   const initialData: Row[] = [
   {
@@ -62,9 +72,6 @@ export const MutualFundsPage: React.FC = () => {
       <div className="filters"><label style={{marginRight:8}}>Category: <input value={q.category || ''} onChange={e => setQ(v => ({...v, category: e.target.value}))} /></label> <label style={{marginRight:8}}>Return Range: <input value={q.returnRange || ''} onChange={e => setQ(v => ({...v, returnRange: e.target.value}))} /></label> <label style={{marginRight:8}}>Fund Type: <input value={q.fundType || ''} onChange={e => setQ(v => ({...v, fundType: e.target.value}))} /></label> </div>
       {/* Table */}
       
-      interface Row {
-  fundName: string;\n  category: string;\n  units: string;\n  nav: string;\n  investedAmount: string;\n  currentValue: string;\n  returns: string;
-      }
       <table className="data-table">
         <thead><tr><th onClick={() => doSort('fundName')}>Fund Name</th><th onClick={() => doSort('category')}>Category</th><th onClick={() => doSort('units')}>Units</th><th onClick={() => doSort('nav')}>NAV</th><th onClick={() => doSort('investedAmount')}>Invested Amount</th><th onClick={() => doSort('currentValue')}>Current Value</th><th onClick={() => doSort('returns')}>Returns (%</th></tr></thead>
         <tbody>{sorted.map((_,i) => (<tr key={i}><td>{sorted[i].fundName}</td><td>{sorted[i].category}</td><td>{sorted[i].units}</td><td>{sorted[i].nav}</td><td>{sorted[i].investedAmount}</td><td>{sorted[i].currentValue}</td><td>{sorted[i].returns}</td></tr>))}</tbody>
